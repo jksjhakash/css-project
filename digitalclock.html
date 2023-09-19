@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    #res{
+        font-size: 8vw;
+        text-align: center;
+        margin: 35vh 0 0 0;
+        font-weight: bolder;
+        transition: 1s;
+    }
+    </style>
+    <script >
+        function showtime(){
+        var d=new Date();
+        var h=d.getHours();
+        var m=d.getMinutes();
+        var s=d.getSeconds();
+        var session = "AM"; 
+        if (h>=12){
+            session = "PM";
+        }
+        if(h>12){
+            h=h-12;
+        }
+        
+        if(h<10){
+            h="0"+h;
+        }
+        if(m<10){
+            m="0"+m;
+        }
+        if(s<10){
+            s="0"+s;
+        }
+        
+        var time=h +" : "+ m +" : "+ s + " " +session;
+        document.getElementById("res").innerText=time;
+        setTimeout(showtime,1000)
+        }
+        function modify(){
+            document.getElementById("res").style.fontSize= "12vw";
+            document.getElementById("res").style.color= "white";
+            document.getElementById("res").style.backgroundColor= "black";
+        }
+        function unmodify(){
+            document.getElementById("res").style.fontSize= "8vw";
+            document.getElementById("res").style.color= "black";
+            document.getElementById("res").style.backgroundColor= "white";
+        }
+    </script>
+</head>
+<body onload="showtime()">
+    <div id="res" onmouseenter="modify()" onmouseleave="unmodify()"></div>
+</body>
+
+
+</html> 
